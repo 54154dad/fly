@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!--    <link rel="shortcut icon" href="/BSD_WXAPP/static/favicon.ico">-->
+    <link rel="stylesheet" href="/BSD_WXAPP/static/bootstrap/css/bootstrap.min.css">
+
+<!--    <script type="text/javascript">-->
+<!--        function resize_iframe(obj) {-->
+<!--            obj.height = $('#main-home').height() - 10;-->
+<!--        }-->
+<!--    </script>-->
+    <link rel="stylesheet" href="/BSD_WXAPP/static/scan/css.css">
+    <title>扫描详情</title>
+</head>
+<body>
+<div class="content">
+    <div class="q_header">
+        雪中飞产品防伪查询系统
+    </div>
+    <div class="q_img">
+        <img width="100%" src="/BSD_WXAPP/static/scan/images/XUEZHONGFEI.jpg" />
+    </div>
+    <div class="q_blackline"></div>
+
+    <div class="q_box">
+<!--        <p class="q_text">此款商品已经被扫描多次</p>-->
+        <p class="q_text qa">请仔细核对以下信息是否与实物一致，如有发现不一致疑似假货时，请点击<a id="rpg" href="javascript: void(0);" class="q_bold">【举报 / 投诉】</a>联系我们！</p>
+        <p class="q_text qb">打假热线：0512-5253 8888转806363</p>
+        <div class="q_browline"></div>
+        <ul class="q_ul">
+            <li class="q_li">
+                <div class="q_info">商&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;标：</div>
+                <div class="q_word q_name">雪中飞</div>
+            </li>
+            <li class="q_li">
+                <div class="q_info">货&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</div>
+                <div class="q_word q_goodsnum">X301310257F</div>
+            </li>
+            <li class="q_li">
+                <div class="q_info">号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：</div>
+                <div class="q_word q_colornum">200/100A</div>
+            </li>
+            <li class="q_li">
+                <div class="q_info">色&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</div>
+                <div class="q_word q_colornum">5019 藏青色|5019</div>
+            </li>
+
+            <li class="q_li">
+                <div class="q_info">条&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</div>
+                <div class="q_word q_stylenum">D533215547161784050743</div>
+            </li>
+        </ul>
+        <div class="q_code2dbox" >
+            <img src="/BSD_WXAPP/static/scan/images/xuezhongfeicode2d.jpg"/>
+            <p class="q_code2dword">
+                关注雪中飞官微了解更多！
+            </p>
+            </br>
+        </div>
+    </div>
+    <script src="/BSD_WXAPP/static/js/jquery.min.js"></script>
+    <script src="/BSD_WXAPP/static/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $("#logout").click(function() {
+            window.location.href="/BSD_WXAPP/admin/logout";
+        });
+
+        function menu(node) {
+            // console.log("node" + node);
+            var tabId = $(node).attr("id");
+            if ($("#" + tabId + "_div").length == 0) {
+                var tabUrl = $(node).attr("href");
+                // console.log("tabId: " + tabId + ", tabUrl:" + tabUrl);
+                show(tabId);
+                $("#main-page").append('<div class="tab-pane remove-tab" id="' + tabId + '_div"><iframe class="embed-responsive-item" src="'+ tabUrl +'" width="100%" onload="javascript: resize_iframe(this);"></iframe></div>');
+            } else {
+                show(tabId);
+            }
+        }
+
+        function show(tabId){
+            // tab
+            $("#navbar").find(".active").removeClass("active");
+            $("#" + tabId).addClass("active");
+            // iframe
+            $(".remove-tab").hide();
+            $("#" + tabId + "_div").show();
+        }
+    </script>
+    <script>
+        // 举报投诉
+        $("#rpg").click(function() {
+            window.location.href = "/BSD_WXAPP/a/rpg.do";
+        });
+    </script>
+</body>
+</html>
+
